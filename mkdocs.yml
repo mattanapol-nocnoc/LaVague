@@ -116,6 +116,7 @@ nav:
   - General guidelines: "docs/contributing/general.md"
   - Pathways:
     - Documentation: "docs/contributing/documentation.md"
+    - BigAction: "docs/contributing/bigaction.md"
   
 - ⚡ Advanced:
   - Architecture: 'docs/get-started/architecture.md'

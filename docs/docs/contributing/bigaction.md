@@ -8,15 +8,26 @@ The development of reliable LAMs is a challenge that requires high-quality curat
 
 This project is inspired by [BigCode](https://www.bigcode-project.org/). Our ambition is to foster an open collaboration around Large Action Models, just like BigCode did around LLMs for code generation. 
 
-
-Take a look at our two publicly available datasets: 
+Take a look at our two publicly available datasets:
 
 - [the-wave-clean](https://huggingface.co/datasets/BigAction/the-wave-clean): a curated, handbuilt, dataset of (query, page HTML) -> (Selenium code)  
 - [mind2web_clean](https://huggingface.co/datasets/BigAction/mind2web_clean): mind2web is an open dataset for building web agents and mind2web_clean is the first community contribution to BigAction! Imène, a PhD student from France, adapted the original dataset of high-level browser tasks to more detailed actions and the associated Selenium code. 
 
-BigAction just launched and we're currently looking to build datasets or convert existing ones. This means that current contributions (apart from increasing your telemetry level when using LaVague) require a **higher level of involvement** to be meaningful while we build tools to make it easier.
+BigAction just launched and current contributions (apart from increasing your telemetry level when using LaVague) require a **higher level of involvement** to be meaningful while we build tools to make it easier.
 
-We're essentially looking to gather more data that maps a natural language query + the full HTML of a page to a specific targetable element (XPath, Selenium code, specific HTML element, etc.). 
+## Diving deeper: the-wave dataset
+
+We're essentially looking to gather precise mappings between a pair consisting of a natural language query and the full HTML to a specific HTML element on the page. 
+
+Our first deliverable for BigAction is the the-wave dataset, here is the current schema: 
+
+- **query**: the query to be performed by the agent
+- **url**: website where the action should be performed
+- **html**: the complete HTML of the page
+- **selenium_ground_truth**: a piece of code that targets the element to be interacted with
+- **ground_truth_outer_html**: the outer HTML of the element to be interacted with
+- **ground_truth_highlighted_screenshot**: a screenshot with a bounding box highlighting the element to be interacted wit
+
 
 
 ## Getting started

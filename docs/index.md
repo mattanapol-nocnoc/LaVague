@@ -19,11 +19,9 @@ pip install lavague-cli
 lavague demo
 ```
 
-This will launch an interactive web interface where you can automate web actions with text instructions.
+This will launch an interactive web interface where you can input a website URL and instructions to automate web actions.
 
- <img src="https://github.com/lavague-ai/LaVague/blob/main/docs/assets/lavague_launch_hn.gif?raw=true" alt="LaVague Interaction Example" style="width: 70%;">
-
- For more information on the LaVague CLI package, see our [CLI guide](https://docs.lavague.ai/en/latest/docs/get-started/CLI)
+For more information on the LaVague CLI package, see our [CLI guide](https://docs.lavague.ai/en/latest/docs/get-started/CLI)
 
 ### LaVague core
 
@@ -48,7 +46,10 @@ print(action)
 ```
 For more informatio on this example and how to use LaVague Core, see our [quick-tour](https://docs.lavague.ai/en/latest/docs/get-started/quick-tour/).
 
-> Note, these examples use our default OpenAI API configuration and you will need to set the OPENAI_API_KEY variable in your local environment with a valid API key for these to work. For different API integrations, see our [integrations guide](https://docs.lavague.ai/en/latest/docs/integrations/home/).
+!!! import "OPENAI_API_KEY"
+    Note, these examples use our default OpenAI API configuration. You will need to set the OPENAI_API_KEY variable in your local environment with a valid API key for these to work. 
+    
+    For different API integrations, see our [integrations guide](https://docs.lavague.ai/en/latest/docs/integrations/home/).
 
 
 ## 🙋 Contributing

@@ -1,8 +1,8 @@
-## Telemetry
+# Telemetry
 
 LaVague has three possible telemetry modes: `HIGH`, `LOW` and `NONE`
 
-### 📈 Default telemetry
+## 📈 Default telemetry
 
 By default, LaVague is set to `LOW` telemetry mode, which records some basic anonymous values to help us improve the product:
 
@@ -18,11 +18,11 @@ This information helps us monitor the performance of LaVague and what features a
 
 If you want to turn off telemetry, you can set your `TELEMETRY_VAR` environment variable to`NONE`.
 
-### 🤗 Contribute more data
+## 🤗 Contribute more data
 
-If you would like to help us monitor LaVague further to improve our project, you can set this variable to "HIGH", using the methods listed in the previous section, but switching `NONE` to `HIGH `.
+If you would like to contribute your LaVague usage data to help us build datasets to further improve the project, you can set your `TELEMETRY_VAR` environment variable to `HIGH`.
 
-The `HIGH` telemetry option will record the default logged information, plus:
+This will record the default logged information, plus:
 
 - The code produced by the LLM
 - A screenshot of the website before the action runs

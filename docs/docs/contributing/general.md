@@ -39,23 +39,34 @@ To avoid having multiple people working on the same things & being unable to mer
 
 ⚠️ Note, we aim to merge as many PRs as possible but we cannot guarantee to merge PRs and they are subject to our review process.
 
-## 🐋 Setting up your dev container (Docker integration)
+## Dev environment
 
-Feel free to make use of our pre-configured dev container in VSCode to quickly set up a dev environment.
+1) To get started working locally on LaVague, firstly make sure you have have forked and cloned the LaVague repo:
 
-!!! note "Pre-requisites"
+```bash
+git clone https://github.com/USER_NAME/LaVague
+```
 
-    - 🐋 Docker: Ensure Docker is installed and running on your machine
-    - Visual Studio Code + Visual Studio Code's Remote - Containers Extension
-    - Ensure you have forked the LaVague repo and git cloned it locally
+2) Next, install poetry, our recommended local package manager.
 
-To open the project in our dev container you need to:
+For Linux users with debian-based distributions, you can run:
+```bash
+sudo apt update
+sudo apt install pipx
+pipx install poetry
+```
 
-1. Open VSCode at the root of your clone of your forked LaVague repo.
-2. Click on the blue "><" icon in the bottom left corner, then select "Reopen in Container" in the drop-down menu that then appears.
+> For installation on other Linux distributions or operating systems, see [the officia Poetry installation guide](https://python-poetry.org/docs/#installing-with-pipx).
 
-VS Code will then build the container based on the Dockerfile and devcontainer.json files in the .devcontainer folder. This will install all necessary dependencies and install the current LaVague repo in 'edit' mode. You are now ready to run LaVague CLI commands and modify the source code files as required.
+3) You can now install the lavague package from the root of your forked repo:
 
-⏳ Note, this process might take a few minutes the first time you run it.
+```bash
+poetry install
+```
 
-> Note, if you want to view the Gradio generated with `lavague [OPTIONS] launch` in-browser on your host machine, you'll need to use the generated `public URL`!
+Your local package will automatically be updated with you latest local file modifications so you can easily test your changes as you work.
+
+!!! "LaVague package structure"
+    Note, LaVague is split into various sub-packages to ease issues relating to dependency conflicts. 
+    
+    If you are making changes to files belonging to one of our subpackages (LIST OF PACKAGES here), you will need to run `poetry install` within this specific folder and not just at the root of LaVague.

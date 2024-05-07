@@ -15,7 +15,7 @@ At LaVague's core, we have an **Action Engine** which uses **advanced AI techniq
 To test out LaVague with our Gradio demo interface you can download our CLI package and run the `lavague demo` command.
 
 ```bash
-pip install lavague[cli]
+pip install lavague-cli
 lavague demo
 ```
 

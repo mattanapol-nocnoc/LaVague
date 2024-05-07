@@ -96,17 +96,17 @@ nav:
 - 🏠 Home: 'index.md'
 
 - 🚀 Getting Started: 
-  - Project structure: 'docs/get-started/project-structure.md'
-  - Quick tour: 'docs/get-started/quick-tour.md'
-  - CLI: 'docs/get-started/CLI.md'
-  - Customization: 'docs/get-started/customization.md'
+  # - Project structure: 'docs/get-started/project-structure.md'
+  # - Quick tour: 'docs/get-started/quick-tour.md'
+  # - CLI: 'docs/get-started/CLI.md'
+  # - Customization: 'docs/get-started/customization.md'
 
 - 🤝 Integrations:
   - Overview: 'docs/integrations/home.md'
-  - Contexts:
-  -   APIs: 'docs/integrations/APIs.md'
-  -   Local inference: 'docs/integrations/local-inference.md'
-  - Drivers: 'docs/integrations/drivers.md'
+  # - Contexts:
+  # -   APIs: 'docs/integrations/APIs.md'
+  # -   Local inference: 'docs/integrations/local-inference.md'
+  # - Drivers: 'docs/integrations/drivers.md'
   
   - 🤗 Contributing:
   - Overview: "docs/contributing/contributing.md"
@@ -114,9 +114,9 @@ nav:
   - Pathways:
     - Documentation: "docs/contributing/documentation.md"
     
-- ⚡ Advanced:
-  - Architecture: 'docs/get-started/architecture.md'
-  - Telemetry: 'docs/advanced/telemetry.md'
+# - ⚡ Advanced:
+  # - Architecture: 'docs/get-started/architecture.md'
+    - Telemetry: 'docs/advanced/telemetry.md'
 
 - 🛠️ API reference:
   - API reference home: 'docs/lavague/index.html'

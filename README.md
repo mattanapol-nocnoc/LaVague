@@ -25,49 +25,49 @@
 
 LaVague is an **open-source Large Action Model framework** for turning **natural language** into **browser actions**.
 
-At LaVague's core, we have an **Action Engine** which uses **advanced AI techniques** (RAG, Few-shot learning, Chain of Thought) to “compile” natural language instructions into browser automation code, by leveraging **Selenium** or **Playwright**.
-
-### LaVague in Action
-
-Here's an example of LaVague being used to execute natural language instructions on a browser to automate web interactions. This example uses the Gradio interface available with the `lavague launch` CLI command:
-
-<div>
-  <figure>
-    <img src="static/hf_lavague.gif" alt="LaVague Interaction Example" style="margin-right: 20px;">
-    <figcaption><b>LaVague interacting with Hugging Face's website.</b></figcaption>
-  </figure>
-  <br><br>
-</div>
+At LaVague's core, we have an **Action Engine** which uses **advanced AI techniques** (RAG, Few-shot learning, Chain of Thought) to “compile” natural language instructions into browser automation code, by leveraging **Playwright** or **Selenium**.
 
 ## 🚀 Getting Started
 
-### Running LaVague in your local env
+### LaVague CLI
 
-You can get started with `LaVague` in 2 steps:
+To test out LaVague with our Gradio demo interface you can download our CLI package and run the `lavague demo` command.
 
-1. Install LaVague & dependencies
-```
-wget https://raw.githubusercontent.com/lavague-ai/LaVague/main/setup.sh &&
-sudo bash setup.sh
-```
-
-2. Run your LaVague command!
-
-You can either `launch` an interactive Gradio interface, where you will see both the automation code generated for each instruction but also a live preview of the results of executing the code with a debug tab.
-```
-lavague --instructions examples/instructions/huggingface.yaml --config examples/configurations/api/openai_api.py launch
+```bash
+pip install lavague[cli]
+lavague demo
 ```
 
-Or you can use the `build` command to directly get the Python code leveraging Selenium in a file, which you can then inspect & execute locally.
+This will launch an interactive web interface where you can automate web actions with text instructions.
+
+ <img src="https://github.com/lavague-ai/LaVague/blob/main/docs/assets/lavague_launch_hn.gif?raw=true" alt="LaVague Interaction Example" style="width: 70%;">
+
+ For more information on the LaVague CLI package, see our [CLI guide](https://docs.lavague.ai/en/latest/docs/get-started/CLI)
+
+### LaVague core
+
+You can download LaVague our PyPi package with:
+
+```bash
+pip install lavague
 ```
-lavague --instructions examples/instructions/huggingface.yaml --config examples/configurations/api/openai_api.py build
+You can then leverage our lavague-core library to generate and execute the code needed to perform web actions.
+
+```python
+from lavague.integrations.drivers.playright import PlayrightDriver
+from lavague.integrations.contexts.apis.openai_api import OpenaiContext
+from lavague import ActionEngine
+
+URL = "https://news.ycombinator.com"
+driver = PlayrightDriver(URL)
+config = OpenaiContext.from_defaults()
+action_engine = ActionEngine.from_context(driver, config)
+action = action_engine.get_action("Enter LaVague inside the search bar and then press enter")
+print(action)
 ```
+For more informatio on this example and how to use LaVague Core, see our [quick-tour](https://docs.lavague.ai/en/latest/docs/get-started/quick-tour/).
 
-For a step-by-step guide or to run LaVague in a Google Colab, see our [quick-tour](https://docs.lavague.ai/en/latest/docs/get-started/quick-tour/) which will walk you through how to get set-up and launch LaVague with our CLI tool.
-
-## 🎭 Playwright integration
-
-If you want to get started with LaVague build using Playwright as your underlying automation tool, see our [Playwright integration guide](./docs/docs/get-started/playwright.md)
+> Note, these examples use our default OpenAI API configuration and you will need to set the OPENAI_API_KEY variable in your local environment with a valid API key for these to work. For different API integrations, see our [integrations guide](https://docs.lavague.ai/en/latest/docs/integrations/home/).
 
 ## 🙋 Contributing
 

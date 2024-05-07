@@ -96,29 +96,27 @@ nav:
 - 🏠 Home: 'index.md'
 
 - 🚀 Getting Started: 
-  - Installation: 'docs/get-started/setting-up-la-vague.md'
-  - Quick tour: 'docs/get-started/quick-tour.ipynb'
-  - VSCode extension (Alpha): 'docs/get-started/get-started-vscode-extension.md'
-  - Playwright: 'docs/get-started/playwright.md'
+  - Project structure: 'docs/get-started/project-structure.md'
+  - Quick tour: 'docs/get-started/quick-tour.md'
+  - CLI: 'docs/get-started/CLI.md'
   - Customization: 'docs/get-started/customization.md'
 
 - 🤝 Integrations:
   - Overview: 'docs/integrations/home.md'
-  - API:
-    - Azure OpenAI: 'docs/integrations/api/azure-openai.ipynb'
-    - HuggingFace: 'docs/integrations/api/hugging-face.ipynb'
-    - OpenAI: 'docs/integrations/api/openai.ipynb'
-    - Litellm: 'docs/integrations/api/litellm.ipynb'
-  - Local:
-    - DeepSeek Coder: 'docs/integrations/local/local-inference.ipynb'
+  - Contexts:
+  -   APIs: 'docs/integrations/APIs.md'
+  -   Local inference: 'docs/integrations/local-inference.md'
+  - Drivers: 'docs/integrations/drivers.md'
   
+  - 🤗 Contributing:
+  - Overview: "docs/contributing/contributing.md"
+  - General guidelines: "docs/contributing/general.md"
+  - Pathways:
+    - Documentation: "docs/contributing/documentation.md"
+    
 - ⚡ Advanced:
   - Architecture: 'docs/get-started/architecture.md'
   - Telemetry: 'docs/advanced/telemetry.md'
-  - Under the hood: 'docs/advanced/under-the-hood.md'
-
-- 🤗 Contributing:
-  - Contributors' guide: "docs/contributing/contributing.md"
 
 - 🛠️ API reference:
   - API reference home: 'docs/lavague/index.html'

@@ -1,11 +1,7 @@
-[build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
-
 [tool.poetry]
-name = "lavague-core"
+name = "lavague-llms-huggingface"
 version = "0.1.0"
-description = "automation code generation from text instructions"
+description = "HuggingFaceLLM integration for lavague"
 authors = ["lavague-ai"]
 readme = "README.md"
 license = "Apache-2.0"
@@ -25,4 +21,12 @@ packages = [{include = "lavague/"}]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
-llama-index = "^0.10.19"
+lavague-core = "^0.1.0"
+llama-index-llms-huggingface = "^0.1.5"
+bitsandbytes = "^0.43.1"
+accelerate = "^0.30.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

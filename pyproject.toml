@@ -4,16 +4,11 @@ requires = ["poetry-core"]
 
 [tool.poetry]
 name = "lavague"
-version = "0.0.1"
+version = "0.1.0"
 description = "automation code generation from text instructions"
+authors = ["lavague-ai"]
 readme = "README.md"
 license = "Apache-2.0"
-authors = [
-  "Mithril Security <contact@mithrilsecurity.io>"
-]
-maintainers = [
-  "Mithril Security <contact@mithrilsecurity.io>"
-]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
@@ -29,8 +24,8 @@ documentation = "https://docs.lavague.ai/en/latest/"
 packages = [{from = "_lavague", include = "lavague"}]
 
 [tool.poetry.dependencies]
-"python" = "^3.8.1"
-"lavague-core" = {path = "lavague-core"}
+python = "^3.8.1"
+lavague-core = "^0.1.0"
 
 [tool.poetry.dev-dependencies]
 ruff = "0.0.292"

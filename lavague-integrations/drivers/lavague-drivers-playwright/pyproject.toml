@@ -1,11 +1,7 @@
-[build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
-
 [tool.poetry]
-name = "lavague-core"
+name = "lavague-drivers-playwright"
 version = "0.1.0"
-description = "automation code generation from text instructions"
+description = "Playwright integration for lavague"
 authors = ["lavague-ai"]
 readme = "README.md"
 license = "Apache-2.0"
@@ -24,5 +20,10 @@ documentation = "https://docs.lavague.ai/en/latest/"
 packages = [{include = "lavague/"}]
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
-llama-index = "^0.10.19"
+python = "^3.8"
+lavague-core = "^0.1.0"
+playwright = "^1.42.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

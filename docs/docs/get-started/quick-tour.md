@@ -6,6 +6,8 @@ In this quick tour, we'll show you how to:
 - Use it's basic components
 - Build and run a simple application
 
+You can setup and run everything locally but this quick tour is also [available on Google Colab](https://colab.research.google.com/github/lavague-ai/lavague/blob/main/docs/docs/get-started/quick-tour-notebook/quick-tour.ipynb)!
+
 ## Setup
 To install LaVague simply run
 
@@ -48,6 +50,7 @@ action_engine = ActionEngine.from_context(driver, config)
 action = action_engine.get_action("Enter LaVague in the search bar and then press enter")
 exec(action)
 ```
+https://colab.research.google.com/github/lavague-ai/lavague/blob/main/docs/docs/get-started/quick-tour-notebook/quick-tour.ipynb
 
 ## Building a simple application with LaVague
 Putting all three basic components together we can build a simple application that executes several actions starting from a given URL. 

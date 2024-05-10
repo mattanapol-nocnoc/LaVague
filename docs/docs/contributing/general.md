@@ -69,4 +69,4 @@ Your local package will automatically be updated with you latest local file modi
 !!! "LaVague package structure"
     Note, LaVague is split into various sub-packages to ease issues relating to dependency conflicts. 
     
-    If you are making changes to files belonging to one of our subpackages (LIST OF PACKAGES here), you will need to run `poetry install` within this specific folder and not just at the root of LaVague.
+    The LaVague repo is made up of many subpackages. If you are modifying a subpackage outside of our default `lavague.core` package such as `lavague.gradio`, you will need to run `poetry install` within this specific folder to see your changes.

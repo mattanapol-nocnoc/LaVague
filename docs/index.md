@@ -12,11 +12,11 @@ At LaVague's core, we have an **Action Engine** which uses **advanced AI techniq
 
 ### LaVague CLI
 
-To test out LaVague with our Gradio demo interface you can download our CLI package and run the `lavague demo` command.
+To test out LaVague with our Gradio demo interface you can download our CLI package and run the `lavague launch` command.
 
 ```bash
 pip install lavague-cli
-lavague demo
+lavague launch
 ```
 
 This will launch an interactive web interface where you can input a website URL and instructions to automate web actions.

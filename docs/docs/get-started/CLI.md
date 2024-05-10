@@ -35,21 +35,55 @@ You can now click on the public (if you are using Google Colab) or local URL to 
 !!! note "How to use Gradio demo"
 
     1. Click on the URL textbox and press enter. This will show a screenshot of your initial page.
-
     2. Select an instruction or write your own, and again click within the instruction textbox and press enter.
 
     Feel free to test out different URLs and instructions.
 
 ## LaVague eval
 
+The `eval` command allows you to quickly evaluate the performance of LaVague's `Large Action Model` by testing the precision and recall of LaVague's LLM and retriever on a batch of instructions against ground truths contained in an evaluation dataset. We provide datasets that can be used for evaluating LaVague in our [BigAction` repo on HuggingFace](https://huggingface.co/BigAction).
+
+The `eval` command will create a `json` file with the following data for each instruction of the evaluation dataset:
+
+- recall_retriever: retriever recall
+- precision_retriever: retriever precision
+- recall_llm: LLM recall
+- precision_llm: LLM precision
+- retrieved_context: The context retrieved
+- ground_truth_outer_html: The ground truths for the path of targetted HTML element
+- retriever_time: time taken for retrieval
+- llm_time: time taken for LLM query
+
 ```bash
 lavague eval --dataset "BigAction/the-wave-clean" --nb-data 25
 ```
 
-lavague eval
+You can then query the data provided in the json file to investigate the performance of LaVague.
 
-dataset
-nrows
+???+ "Example queries on output file"
+    For example, you could get the average precision and recall of the retriever with the following code:
+
+    ```python
+    # function for printing avergae retriever recall & prevcision
+    def retriever_stats(filename: str):
+    import json
+
+    # Open the file
+    with open(filename, 'r') as file:
+        json_data = [json.loads(line) for line in file]
+
+    # Calculate average recall_retriever and precision_retriever
+    total_recall = sum(entry['recall_retriever'] for entry in json_data)
+    total_precision = sum(entry['precision_retriever'] for entry in json_data)
+    average_recall = total_recall / len(json_data)
+    average_precision = total_precision / len(json_data)
+
+    # Print average values
+    print("Average recall: {:.2f}".format(average_recall))
+    print("Average precision: {:.2f}".format(average_precision))
+
+    retriever_stats('openai.json')
+    ```
 
 ??? info "Optional arguments"
     You can also use the following **optional** arguments:

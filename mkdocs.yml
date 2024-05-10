@@ -18,12 +18,11 @@ theme:
     - navigation.sections
     - navigation.indexes
     - navigation.expand
+    - content.code.copy
     
   logo: assets/logo.png
   favicon: assets/logo.png
-  theme:
   palette:
-
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -89,12 +88,19 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.critic
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences
 
 
 # Documentation tree
 nav:
   - 🏠 Home: 'index.md'
 
+  - Get Started:
+    - Quick Tour: 'docs/get-started/quick-tour.md'
   - 🤝 Integrations:
     - Overview: 'docs/integrations/home.md'
 

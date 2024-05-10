@@ -1,59 +1,87 @@
 # LaVague Quick Tour
 
-In this quick tour, we'll show you how to use the LaVague CLI to perform actions on web from natural language instructions.
+In this quick tour, we'll show you how to:
 
-If you prefer to run this quick tour as end-to-end Google Colab notebook, follow [this link](https://colab.research.google.com/github/lavague-ai/lavague/blob/main/docs/docs/get-started/quick-tour-notebook/quick-tour.ipynb)
+- Get setup with the LaVague framework
+- Use it's basic components
+- Build and run a simple application
 
-!!! note "Pre-requisites"
-    - Make sure you've already [installed LaVague](https://docs.lavague.ai/en/latest/docs/get-started/setting-up-la-vague/)
-    - Our default demo uses the OpenAI API. You will need to have an OPENAI_API_KEY environment variable set in your local environment
-
-    To use LaVague with different APIs, see our [integrations section](https://docs.lavague.ai/en/latest/docs/integrations/home/)
-
-## LaVague Launch
-<div>
-    <img src="https://raw.githubusercontent.com/lavague-ai/lavague/main/docs/assets/lavague_launch_hn.gif" alt="LaVague Launch Example">
-</div>
-You can launch an interactive in-browser Gradio demo where you can test out instructing LaVague to perform actions on a website with the following command:
+## Setup
+To install LaVague simply run
 
 ```bash
-lavague launch
+pip install lavague
 ```
 
-??? info "Optional arguments"
-    You can specify a custom URL and instructions or LaVague configuration with the following arguments:
+This will install all necessary dependencies and drivers to start using our Large Action Model framework to automate your tasks. 
 
-    - The `--instructions` or `-i` option accepts a yaml file containing: the URL of the website we will interact with & the instructions for the actions we wish to automate
-    -  The `--config` or `-c` option with a Python file which can be used to set a desired LLM, embedder etc.
+## Basic Components
 
-    For more information, see the [customization guide](https://docs.lavague.ai/en/latest/docs/get-started/customization/)!
-
-You can now click on the public (if you are using Google Colab) or local URL to open your interactive LaVague demo.
-
-!!! note "How to use Gradio demo"
-
-    1. Click on the URL textbox and press enter. This will show a screenshot of your initial page.
-
-    2. Select an instruction or write your own, and again click within the instruction textbox and press enter.
-
-    Feel free to test out different URLs and instructions.
+### Drivers
+Drivers are responsible for taking control of a browser. They require a base URL which they will load first.
+To use Playwright you can do: 
+```py
+from lavague.drivers.playwright import PlaywrightDriver
+URL = "https://news.ycombinator.com"
+driver = PlaywrightDriver(URL)
+```
+At the moment we support two well-known frameworks for browser automation: Playwright and Selenium. 
 
 
+### Contexts
+Contexts define the LLM used by our ActionEngine to generate code for the *Driver* to execute
+To use the OpenAI context with default parameters you can do:
 
-## LaVague Build
-<div>
-    <img src="https://raw.githubusercontent.com/lavague-ai/lavague/main/docs/assets/lavague_build_hn.gif" alt="LaVague Build Example">
-</div>
+```py
+from lavague.contexts.apis.openai_api import OpenaiContext
+config = OpenaiContext.from_defaults()
+```
+To learn more about all Contexts we currently support, check out our Integrations page. 
 
-Alternatively, you can use the `build` command to generate the automation code directly without launching a Gradio demo:
+### ActionEngine
+The ActionEngine orchestrates everything. It is initialized from a Driver and a Context. 
+It can take a natural language prompt and generate a browser action from it. 
 
-```bash
-lavague build
+```py
+from lavague import ActionEngine
+action_engine = ActionEngine.from_context(driver, config)
+action = action_engine.get_action("Enter LaVague in the search bar and then press enter")
+exec(action)
 ```
 
-This will create an automation script in your current directory named `output_gen.py`.
+## Building a simple application with LaVague
+Putting all three basic components together we can build a simple application that executes several actions starting from a given URL. 
 
-You can then inspect the code and execute it locally!
+```py
+from lavague.drivers.playright import PlaywrightDriver
+from lavague.contexts.apis.openai_api import OpenaiContext
+from lavague import ActionEngine
+
+URL = "https://news.ycombinator.com"
+
+driver = PlaywrightDriver(URL)
+config = OpenaiContext.from_defaults()
+action_engine = ActionEngine.from_context(driver, config)
+action = action_engine.get_action("Enter LaVague in the search bar and then press enter")
+action.exec_code()
+
+action = action_engine.get_action("Click the first link from the search results")
+action.exec_code()
+```
+
+You could also list all instructions and execute them sequentially
+```py
+instructions = ["Click on the second link in the nav bar", 
+                "scroll down 300px", 
+                "Enter LaVague in the search bar"]
+
+for instruction in instructions:
+    action = action_engine.get_action(instruction)
+    action.exec_code()
+    time.sleep(1)
+```
+
+
 
 ### Support
 

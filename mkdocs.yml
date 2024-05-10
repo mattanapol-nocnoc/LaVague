@@ -95,8 +95,17 @@ markdown_extensions:
 nav:
   - 🏠 Home: 'index.md'
 
+  - 🚀 Getting Started:
+  - Quick tour: 'docs/get-started/quick-tour.md'
+  - CLI: 'docs/get-started/cli.md'
+  - Customization: 'docs/get-started/customization.md'
+
   - 🤝 Integrations:
     - Overview: 'docs/integrations/home.md'
+    - APIs: 'docs/integrations/APIs.md'
+    - Local inference: 'docs/integrations/local-inference.md'
+    - Drivers:
+      - Selenium: 'docs/integrations/selenium.md'
 
   - 🤗 Contributing:
     - Overview: "docs/contributing/contributing.md"

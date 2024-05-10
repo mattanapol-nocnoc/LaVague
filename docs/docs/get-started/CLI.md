@@ -1,30 +1,34 @@
-# LaVague Quick Tour
+# LaVague CLI
 
-In this quick tour, we'll show you how to use the LaVague CLI to launch an interactive Gradio demo where you can perform actions on a website from natural language instructions.
+The Lavague CLI provides a fast way to get started with our `demo` and `eval` tools:
 
-If you prefer to run this quick tour as end-to-end Google Colab notebook, follow [this link](https://colab.research.google.com/github/lavague-ai/lavague/blob/main/docs/docs/get-started/notebooks/CLI.ipynb)
+-  `demo` launches an interactive Gradio demo where you can perform web actions from natural language instructions
+- `eval` allows you to evaluate the performance of the Large Action Model
 
 !!! note "API key"
-    - Our default demo uses the OpenAI API. You will need to have an OPENAI_API_KEY environment variable set in your local environment
+    - Our CLI uses the OpenAI API by default. You will need to have the OPENAI_API_KEY environment variable set  with a valid API key in your local environment.
     To use LaVague with different APIs, see our [integrations section](https://docs.lavague.ai/en/latest/docs/integrations/home/)
 
-## LaVague Launch
+## LaVague demo
 <div>
     <img src="https://raw.githubusercontent.com/lavague-ai/lavague/main/docs/assets/lavague_launch_hn.gif" alt="LaVague Launch Example">
 </div>
-You can launch an interactive in-browser Gradio demo where you can test out instructing LaVague to perform actions on a website with the following command:
+You can launch an interactive in-browser Gradio demo of LaVague with the following command:
 
 ```bash
 lavague launch
 ```
 
 ??? info "Optional arguments"
-    You can specify a custom URL and instructions or LaVague configuration with the following arguments:
+    You can also use the following **optional** arguments:
 
-    - The `--instructions` or `-i` option accepts a yaml file containing: the URL of the website we will interact with & the instructions for the actions we wish to automate
-    -  The `--config` or `-c` option with a Python file which can be used to set a desired LLM, embedder etc.
+    - `--url`: You can pre-populate the URL input textbox of the Gradio demo with a URL as a string here
+    - `--instructions`: You can pre-populate the instruction options for the Gradio interface here with an instruction string, or list of strings
+    -- `--driver`: Set this option to 'selenium' to leverage Selenium rather than the default playwright driver
+    -- `--context`: Provide the name of one of our build in configuration contexts, such as 'OpenAI', 'Azure', 'Anthropic' etc.
+    -- `--file_path`: Provide a path to a Python config file defining a custom ActionEngine (with the LLM, embedder, etc. of your choice)
 
-    For more information, see the [customization guide](https://docs.lavague.ai/en/latest/docs/get-started/customization/)!
+    For more information on how to create a custom Python config file, see the [customization guide](https://docs.lavague.ai/en/latest/docs/get-started/customization/)!
 
 You can now click on the public (if you are using Google Colab) or local URL to open your interactive LaVague demo.
 
@@ -35,6 +39,26 @@ You can now click on the public (if you are using Google Colab) or local URL to 
     2. Select an instruction or write your own, and again click within the instruction textbox and press enter.
 
     Feel free to test out different URLs and instructions.
+
+## LaVague eval
+
+```bash
+lavague eval --dataset "BigAction/the-wave-clean" --nb-data 25
+```
+
+lavague eval
+
+dataset
+nrows
+
+??? info "Optional arguments"
+    You can also use the following **optional** arguments:
+
+    -- `--dataset`: Name of evaluation dataset slug to download from HuggingFace such as 'BigAction/the-wave-clean'
+    -- `--nrows`: Number of rows of the dataset to test to be set based on your needs
+    -- `--driver`: Set this option to 'selenium' to leverage Selenium rather than the default playwright driver
+    -- `--context`: Provide the name of one of our build in configuration contexts, such as 'OpenAI', 'Azure', 'Anthropic' etc.
+    -- `--file_path`: Provide a path to a Python config file defining a custom ActionEngine (with the LLM, embedder, etc. of your choice)
 
 ### Support
 

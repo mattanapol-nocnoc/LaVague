@@ -29,7 +29,7 @@ For guidance on installing chromedriver in Windows see [instructions here](https
 
 ### Using LaVague with Selenium
 
-To use the LaVague library with Selenium, you will need to import our SeleniumDriver object which you can initialize with the URL of the website you wish to perform actions on.
+To use the LaVague library with Selenium, you will need to import our SeleniumDriver object which you can initialize with the URL of the website you wish to perform actions on. You then provide this driver object as the `driver` argument for the `ActionEngine`.
 
 ```python
 from lavague.drivers.selenium import SeleniumDriver
@@ -43,5 +43,10 @@ action = action_engine.get_action("Enter hop inside the search bar and then pres
 print(action)
 ```
 
+### Using LaVague CLI with Selenium
 
+If you wish to use LaVague CLI with Selenium, you will need to add the `--driver=selenium` option to your CLI command as follows:
 
+```bash
+lavague launch --driver=selenium
+```

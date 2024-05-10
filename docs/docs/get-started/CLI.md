@@ -24,9 +24,9 @@ lavague launch
 
     - `--url`: You can pre-populate the URL input textbox of the Gradio demo with a URL as a string here
     - `--instructions`: You can pre-populate the instruction options for the Gradio interface here with an instruction string, or list of strings
-    -- `--driver`: Set this option to 'selenium' to leverage Selenium rather than the default playwright driver
-    -- `--context`: Provide the name of one of our build in configuration contexts, such as 'OpenAI', 'Azure', 'Anthropic' etc.
-    -- `--file_path`: Provide a path to a Python config file defining a custom ActionEngine (with the LLM, embedder, etc. of your choice)
+    - `--driver`: Set this option to 'selenium' to leverage Selenium rather than the default playwright driver
+    - `--context`: Provide the name of one of our build in configuration contexts, such as 'OpenAI', 'Azure', 'Anthropic' etc.
+    - `--file_path`: Provide a path to a Python config file defining a custom ActionEngine (with the LLM, embedder, etc. of your choice)
 
     For more information on how to create a custom Python config file, see the [customization guide](https://docs.lavague.ai/en/latest/docs/get-started/customization/)!
 
@@ -43,16 +43,17 @@ You can now click on the public (if you are using Google Colab) or local URL to 
 
 The `eval` command allows you to quickly evaluate the performance of LaVague's `Large Action Model` by testing the precision and recall of LaVague's LLM and retriever on a batch of instructions against ground truths contained in an evaluation dataset. We provide datasets that can be used for evaluating LaVague in our [BigAction` repo on HuggingFace](https://huggingface.co/BigAction).
 
-The `eval` command will create a `json` file with the following data for each instruction of the evaluation dataset:
+!!! info "Output data"
+    The `eval` command will create a `json` file with the following data for each instruction of the evaluation dataset:
 
-- recall_retriever: retriever recall
-- precision_retriever: retriever precision
-- recall_llm: LLM recall
-- precision_llm: LLM precision
-- retrieved_context: The context retrieved
-- ground_truth_outer_html: The ground truths for the path of targetted HTML element
-- retriever_time: time taken for retrieval
-- llm_time: time taken for LLM query
+    - recall_retriever: retriever recall
+    - precision_retriever: retriever precision
+    - recall_llm: LLM recall
+    - precision_llm: LLM precision
+    - retrieved_context: The context retrieved
+    - ground_truth_outer_html: The ground truths for the path of targetted HTML element
+    - retriever_time: time taken for retrieval
+    - llm_time: time taken for LLM query
 
 ```bash
 lavague eval --dataset "BigAction/the-wave-clean" --nb-data 25
@@ -60,39 +61,27 @@ lavague eval --dataset "BigAction/the-wave-clean" --nb-data 25
 
 You can then query the data provided in the json file to investigate the performance of LaVague.
 
-???+ "Example queries on output file"
-    For example, you could get the average precision and recall of the retriever with the following code:
+For example, you could get the average recall of the retriever with the following code:
 
-    ```python
-    # function for printing avergae retriever recall & prevcision
-    def retriever_stats(filename: str):
-    import json
+```python
+import json
 
-    # Open the file
-    with open(filename, 'r') as file:
-        json_data = [json.loads(line) for line in file]
+with open(filename, 'r') as file:
+    json_data = [json.loads(line) for line in file]
 
-    # Calculate average recall_retriever and precision_retriever
-    total_recall = sum(entry['recall_retriever'] for entry in json_data)
-    total_precision = sum(entry['precision_retriever'] for entry in json_data)
-    average_recall = total_recall / len(json_data)
-    average_precision = total_precision / len(json_data)
-
-    # Print average values
-    print("Average recall: {:.2f}".format(average_recall))
-    print("Average precision: {:.2f}".format(average_precision))
-
-    retriever_stats('openai.json')
-    ```
+total_recall = sum(entry['recall_retriever'] for entry in json_data)
+average_recall = total_recall / len(json_data)
+print("Average retriever recall: {:.2f}".format(average_recall))
+```
 
 ??? info "Optional arguments"
     You can also use the following **optional** arguments:
 
-    -- `--dataset`: Name of evaluation dataset slug to download from HuggingFace such as 'BigAction/the-wave-clean'
-    -- `--nrows`: Number of rows of the dataset to test to be set based on your needs
-    -- `--driver`: Set this option to 'selenium' to leverage Selenium rather than the default playwright driver
-    -- `--context`: Provide the name of one of our build in configuration contexts, such as 'OpenAI', 'Azure', 'Anthropic' etc.
-    -- `--file_path`: Provide a path to a Python config file defining a custom ActionEngine (with the LLM, embedder, etc. of your choice)
+    - `--dataset`: Name of evaluation dataset slug to download from HuggingFace such as 'BigAction/the-wave-clean'
+    - `--nrows`: Number of rows of the dataset to test to be set based on your needs
+    - `--driver`: Set this option to 'selenium' to leverage Selenium rather than the default playwright driver
+    - `--context`: Provide the name of one of our build in configuration contexts, such as 'OpenAI', 'Azure', 'Anthropic' etc.
+    - `--file_path`: Provide a path to a Python config file defining a custom ActionEngine (with the LLM, embedder, etc. of your choice)
 
 ### Support
 

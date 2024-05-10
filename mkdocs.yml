@@ -96,9 +96,9 @@ nav:
   - 🏠 Home: 'index.md'
 
   - 🚀 Getting Started:
-  - Quick tour: 'docs/get-started/quick-tour.md'
-  - CLI: 'docs/get-started/cli.md'
-  - Customization: 'docs/get-started/customization.md'
+    - Quick tour: 'docs/get-started/quick-tour.md'
+    - CLI: 'docs/get-started/CLI.md'
+    - Customization: 'docs/get-started/customization.md'
 
   - 🤝 Integrations:
     - Overview: 'docs/integrations/home.md'

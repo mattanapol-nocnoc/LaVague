@@ -71,9 +71,7 @@ from selenium.webdriver.common.keys import Keys
                         break
 
                     except Exception as e:
-                        
                         print("Action execution failed. Retrying...")
-                        print("Error:", e)
                         pass
             else:
                 print("Objective reached")

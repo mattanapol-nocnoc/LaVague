@@ -6,7 +6,9 @@ In this quick tour, we'll show you how to:
 - Use it's basic components
 - Build and run a simple application
 
-You can setup and run everything locally but this quick tour is also [available on Google Colab](https://colab.research.google.com/github/lavague-ai/lavague/blob/main/docs/docs/get-started/quick-tour-notebook/quick-tour.ipynb)!
+
+This quick tour is also available as a [notebook on Google Colab](https://colab.research.google.com/github/lavague-ai/lavague/blob/main/docs/docs/get-started/notebooks/quick-tour.ipynb)
+
 
 ## Setup
 To install LaVague simply run

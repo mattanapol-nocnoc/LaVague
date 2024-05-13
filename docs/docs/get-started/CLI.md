@@ -9,6 +9,9 @@ The Lavague CLI provides a fast way to get started with our `demo` and `eval` to
     - Our CLI uses the OpenAI API by default. You will need to have the OPENAI_API_KEY environment variable set  with a valid API key in your local environment.
     To use LaVague with different APIs, see our [integrations section](https://docs.lavague.ai/en/latest/docs/integrations/home/)
 
+
+This documentation is also available as a [notebook on Google Colab](https://colab.research.google.com/github/lavague-ai/lavague/blob/main/docs/docs/get-started/notebooks/cli.ipynb)
+
 ## LaVague demo
 <div>
     <img src="https://raw.githubusercontent.com/lavague-ai/lavague/main/docs/assets/lavague_launch_hn.gif" alt="LaVague Launch Example">

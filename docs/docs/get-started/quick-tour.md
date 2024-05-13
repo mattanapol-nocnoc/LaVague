@@ -88,6 +88,6 @@ for instruction in instructions:
 
 
 
-### Support
+## Support
 
 If you have any further questions, join us on the LaVague Discord [here](https://discord.com/invite/SDxn9KpqX9).

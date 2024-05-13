@@ -86,6 +86,6 @@ print("Average retriever recall: {:.2f}".format(average_recall))
     - `--context`: Provide the name of one of our build in configuration contexts, such as 'OpenAI', 'Azure', 'Anthropic' etc.
     - `--file_path`: Provide a path to a Python config file defining a custom ActionEngine (with the LLM, embedder, etc. of your choice)
 
-### Support
+## Support
 
 If you have any further questions, join us on the LaVague Discord [here](https://discord.com/invite/SDxn9KpqX9).
